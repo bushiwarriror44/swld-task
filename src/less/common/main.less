@@ -1,0 +1,24 @@
+@import '../core/null.less';
+
+@import '../core/variables.less';
+@import '../core/mixins.less';
+
+h1 {
+  .halvar-font-extrabold();
+  font-size: @h1-font-size;
+  line-height: @h1-line-height;
+  text-align: center;
+  color: @h1-color;
+
+}
+h2, h3, h4, h5, h6 {
+  .halvar-font-bold();
+}
+
+p, span, figcaption, img {
+  .manrope-text();
+}
+
+a, button {
+  .manrope-semibold()
+}

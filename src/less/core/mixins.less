@@ -1,0 +1,228 @@
+// Миксины для шрифтов
+.halvar-font() {
+  font-family: @font-family-halvar;
+  font-weight: 700;
+}
+
+.halvar-font-bold() {
+  font-family: @font-family-halvar;
+  font-weight: 700;
+}
+
+.halvar-font-extrabold() {
+  font-family: @font-family-halvar;
+  font-weight: 800;
+}
+
+.halvar-heading(@size: 2rem, @weight: 700) {
+  font-family: @font-family-halvar;
+  font-size: @size;
+  font-weight: @weight;
+  line-height: 1.2;
+}
+
+.set-stadard-page-width(){
+
+  max-width: @page-width-desktop;
+  margin: 0 auto;
+  
+}
+
+.halvar-heading-bold(@size: 2rem) {
+  .halvar-heading(@size, 700);
+}
+
+.halvar-heading-extrabold(@size: 2rem) {
+  .halvar-heading(@size, 800);
+}
+
+// Миксины для шрифта Manrope
+.manrope-font(@weight: @manrope-regular) {
+  font-family: @font-family-manrope;
+  font-weight: @weight;
+}
+
+.manrope-text(@size: @standard-text-size, @weight: @manrope-regular) {
+  .manrope-font(@weight);
+  font-size: @size;
+  line-height: @standard-text-lh;
+  color: @standard-text-color;
+}
+
+// Специфичные миксины для разных весов Manrope
+.manrope-regular(@size: @standard-text-size) {
+  .manrope-text(@size, @manrope-regular);
+}
+
+.manrope-semibold(@size: @standard-text-size) {
+  .manrope-text(@size, @manrope-semibold);
+}
+
+// Миксины для градиентов
+.gradient-blue-light(@direction: 90deg) {
+  background: linear-gradient(@direction, @light-blue 0%, @concentrated-blue 100%);
+}
+
+.gradient-blue-horizontal() {
+  background: linear-gradient(90deg, @light-blue 0%, @concentrated-blue 100%);
+}
+
+.gradient-blue-vertical() {
+  background: linear-gradient(180deg, @light-blue 0%, @concentrated-blue 100%);
+}
+
+.gradient-blue-diagonal() {
+  background: linear-gradient(135deg, @light-blue 0%, @concentrated-blue 100%);
+}
+
+.set-standard-page-width(){
+
+
+  
+}
+
+// Миксины для текста
+.standard-text() {
+  color: @standard-text-color;
+  font-size: @standard-text-size;
+  line-height: @standard-text-lh;
+  font-weight: @standard-text-weight;
+}
+
+.standard-heading() {
+  color: @standard-heading-color;
+  font-weight: @standard-heading-weight;
+  line-height: @standard-heading-lh;
+}
+
+// Миксины для кнопок
+.flat-loading-btn() {
+  background-color: @flat-loading-btn;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: darken(@flat-loading-btn, 10%);
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+// Миксины для карточек и элементов
+.items-bg() {
+  background-color: @items-bg-color;
+}
+
+.items-list-bg() {
+  background-color: @items-list-bg-color;
+}
+
+// Миксины для центрирования
+.center-flex() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-absolute() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Миксины для адаптивности
+.media-mobile(@rules) {
+  @media (max-width: 768px) {
+    @rules();
+  }
+}
+
+.media-tablet(@rules) {
+  @media (max-width: 1024px) {
+    @rules();
+  }
+}
+
+.media-desktop(@rules) {
+  @media (min-width: 1025px) {
+    @rules();
+  }
+}
+
+// Миксины для переходов
+.transition(@property: all, @duration: 0.3s, @timing: ease-in-out) {
+  transition: @property @duration @timing;
+}
+
+.transition-fast(@property: all) {
+  transition: @property 0.15s ease-in-out;
+}
+
+.transition-slow(@property: all) {
+  transition: @property 0.5s ease-in-out;
+}
+
+// Миксины для скругления углов
+.border-radius(@radius: 8px) {
+  border-radius: @radius;
+}
+
+.border-radius-sm(@radius: 4px) {
+  border-radius: @radius;
+}
+
+.border-radius-lg(@radius: 12px) {
+  border-radius: @radius;
+}
+
+.border-radius-xl(@radius: 16px) {
+  border-radius: @radius;
+}
+
+// Миксины для теней
+.box-shadow(@shadow: 0 2px 8px rgba(0, 0, 0, 0.1)) {
+  box-shadow: @shadow;
+}
+
+.box-shadow-sm(@shadow: 0 1px 4px rgba(0, 0, 0, 0.05)) {
+  box-shadow: @shadow;
+}
+
+.box-shadow-lg(@shadow: 0 4px 16px rgba(0, 0, 0, 0.15)) {
+  box-shadow: @shadow;
+}
+
+// Миксины для скрытия/показа элементов
+.hidden() {
+  display: none;
+}
+
+.visible() {
+  display: block;
+}
+
+.invisible() {
+  visibility: hidden;
+}
+
+// Миксины для позиционирования
+.relative() {
+  position: relative;
+}
+
+.absolute() {
+  position: absolute;
+}
+
+.fixed() {
+  position: fixed;
+}
+
+.sticky() {
+  position: sticky;
+}
