@@ -149,32 +149,12 @@ const setupListItemsHoverEffects = (listItems: NodeListOf<HTMLLIElement>) => {
 			});
 		};
 
-		const handleHeaderMouseEnter = () => {
-			gsap.to(header, {
-				color: '#AECCE9',
-				duration: 0.2,
-				ease: 'power2.out',
-			});
-		};
-
-		const handleHeaderMouseLeave = () => {
-			gsap.to(header, {
-				color: '#ffffff',
-				duration: 0.2,
-				ease: 'power2.out',
-			});
-		};
-
 		image.addEventListener('mouseenter', handleImageMouseEnter);
 		image.addEventListener('mouseleave', handleImageMouseLeave);
-		header.addEventListener('mouseenter', handleHeaderMouseEnter);
-		header.addEventListener('mouseleave', handleHeaderMouseLeave);
 
 		(item as HTMLLIElement & { _cleanupFunctions?: (() => void)[] })._cleanupFunctions = [
 			() => image.removeEventListener('mouseenter', handleImageMouseEnter),
 			() => image.removeEventListener('mouseleave', handleImageMouseLeave),
-			() => header.removeEventListener('mouseenter', handleHeaderMouseEnter),
-			() => header.removeEventListener('mouseleave', handleHeaderMouseLeave),
 		];
 	});
 };

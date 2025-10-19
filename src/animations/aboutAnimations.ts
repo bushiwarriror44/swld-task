@@ -20,7 +20,6 @@ export const initAboutAnimations = (elements: AboutAnimationElements) => {
 
 	const tl = gsap.timeline({ delay: 0.2 });
 
-	animateBackgroundImage(tl, bgImage);
 	animateContentContainer(tl, content);
 	animateHeading(tl, heading);
 	animateDescription(tl, description);
@@ -28,24 +27,6 @@ export const initAboutAnimations = (elements: AboutAnimationElements) => {
 	setupHoverEffects(downloadBtn);
 
 	return tl;
-};
-
-const animateBackgroundImage = (tl: gsap.core.Timeline, bgImage: HTMLImageElement) => {
-	tl.fromTo(
-		bgImage,
-		{
-			scale: 1.2,
-			opacity: 0,
-			rotation: 3,
-		},
-		{
-			scale: 1,
-			opacity: 1,
-			rotation: 0,
-			duration: 1.5,
-			ease: 'power2.out',
-		},
-	);
 };
 
 const animateContentContainer = (tl: gsap.core.Timeline, content: HTMLDivElement) => {
@@ -189,7 +170,7 @@ export const cleanupAboutAnimations = (
 };
 
 export const initAboutScrollAnimations = (elements: AboutAnimationElements) => {
-	const { section, bgImage, content, heading, description, downloadBtn } = elements;
+	const { section, content, heading, description, downloadBtn } = elements;
 
-	if (!section || !bgImage || !content || !heading || !description || !downloadBtn) return;
+	if (!section || !content || !heading || !description || !downloadBtn) return;
 };
