@@ -1,34 +1,77 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import bg from '../assets/img/about/content-img.png';
+
+import { initAboutAnimations, cleanupAboutAnimations } from '../animations/aboutAnimations';
+import type { AboutAnimationElements } from '../animations/aboutAnimations';
 const About: React.FC = () => {
+	const sectionRef = useRef<HTMLElement>(null);
+	const innerRef = useRef<HTMLDivElement>(null);
+	const bgImageRef = useRef<HTMLImageElement>(null);
+	const contentRef = useRef<HTMLDivElement>(null);
+	const headingRef = useRef<HTMLHeadingElement>(null);
+	const descriptionRef = useRef<HTMLParagraphElement>(null);
+	const downloadBtnRef = useRef<HTMLAnchorElement>(null);
+
+	useEffect(() => {
+		const elements: AboutAnimationElements = {
+			section: sectionRef.current,
+			inner: innerRef.current,
+			bgImage: bgImageRef.current,
+			content: contentRef.current,
+			heading: headingRef.current,
+			description: descriptionRef.current,
+			downloadBtn: downloadBtnRef.current,
+		};
+
+		const timeline = initAboutAnimations(elements);
+
+		return () => {
+			if (timeline) {
+				cleanupAboutAnimations(timeline, elements.downloadBtn || undefined);
+			}
+		};
+	}, []);
+
 	return (
 		<section
+			ref={sectionRef}
 			className="about"
 			itemScope
 			itemType="https://schema.org/AboutPage"
 			aria-labelledby="about-heading">
-			<div className="about__inner" role="region" aria-label="Информация о Quant VPN">
+			<div
+				ref={innerRef}
+				className="about__inner"
+				role="region"
+				aria-label="Информация о Quant VPN">
 				<img
+					ref={bgImageRef}
 					className="about__bg"
 					src={bg}
 					alt="Quant VPN Content Image of World"
 					itemProp="image"
-					loading='lazy'
+					loading="lazy"
 				/>
 				<div
+					ref={contentRef}
 					className="about__content"
 					itemProp="mainEntity"
 					itemScope
 					itemType="https://schema.org/SoftwareApplication">
-					<h2 className="about__content-heading" id="about-heading" itemProp="name">
+					<h2
+						ref={headingRef}
+						className="about__content-heading"
+						id="about-heading"
+						itemProp="name">
 						Почему Quant VPN?
 					</h2>
-					<p className="about__content-desc" itemProp="description">
+					<p ref={descriptionRef} className="about__content-desc" itemProp="description">
 						Для тех, кто не приемлет компромиссов. Защитите себя и своих близких уже сегодня.
 						Скачайте Quant VPN и узнайте, что значит жить в цифровом мире без страха
 					</p>
 					<a
+						ref={downloadBtnRef}
 						className="about__content-download"
 						href="."
 						itemProp="downloadUrl"

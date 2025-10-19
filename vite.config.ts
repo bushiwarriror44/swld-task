@@ -10,13 +10,7 @@ export default defineConfig({
 				additionalData: `@import "bootstrap/scss/bootstrap";`,
 			},
 			less: {
-				// Настройки для Less
 				javascriptEnabled: true,
-				modifyVars: {
-					// Здесь можно переопределить переменные Less
-				},
-				// Автоматический импорт переменных и миксинов
-				// additionalData: `@import "src/less/core/variables.less"; @import "src/less/core/mixins.less";`,
 			},
 		},
 	},

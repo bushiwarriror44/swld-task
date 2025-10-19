@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import img1 from '../assets/img/intro/item-img-1.png';
 import img2 from '../assets/img/intro/item-img-2.png';
@@ -7,9 +7,37 @@ import img1Mobile from '../assets/img/intro/item-img-1-mobile.png';
 import bg from '../assets/img/intro/main-bg.png';
 import bgMobile from '../assets/img/intro/main-bg-mobile.png';
 
+import { initIntroAnimations, cleanupIntroAnimations } from '../animations/introAnimations';
+import type { IntroAnimationElements } from '../animations/introAnimations';
+
 const Intro: React.FC = () => {
+	const sectionRef = useRef<HTMLElement>(null);
+	const itemsRef = useRef<HTMLDivElement>(null);
+	const bgRef = useRef<HTMLDivElement>(null);
+	const prefItemsRef = useRef<HTMLDivElement>(null);
+	const downloadBtnRef = useRef<HTMLAnchorElement>(null);
+
+	useEffect(() => {
+		const elements: IntroAnimationElements = {
+			section: sectionRef.current,
+			items: itemsRef.current,
+			bg: bgRef.current,
+			prefItems: prefItemsRef.current,
+			downloadBtn: downloadBtnRef.current,
+		};
+
+		const timeline = initIntroAnimations(elements);
+
+		return () => {
+			if (timeline) {
+				cleanupIntroAnimations(timeline);
+			}
+		};
+	}, []);
+
 	return (
 		<section
+			ref={sectionRef}
 			className="intro"
 			aria-label="Введение о Quant VPN и преимущества"
 			itemScope
@@ -19,11 +47,11 @@ const Intro: React.FC = () => {
 			<meta itemProp="brand" content="Quant" />
 
 			<div
+				ref={itemsRef}
 				className="intro__items"
 				role="group"
 				aria-label="Описание преимуществ приватности и скорости">
 				<div className="intro__items-item" itemProp="description">
-					
 					<figure>
 						<picture>
 							<source srcSet={img1} media="(min-width: 450px)" />
@@ -35,20 +63,19 @@ const Intro: React.FC = () => {
 								itemProp="image"
 							/>
 						</picture>
-						
+
 						<figcaption className="intro__items-item-para">
 							В мире, где приватность становится роскошью, Quant VPN меняет правила игры
 						</figcaption>
 					</figure>
 				</div>
 
-				<div className="intro__items-item--bg" aria-hidden="true">
+				<div ref={bgRef} className="intro__items-item--bg" aria-hidden="true">
 					<picture>
 						<source srcSet={bg} media="(min-width: 450px)" />
 						<source srcSet={bgMobile} media="(max-width: 450px)" />
-						<img loading='lazy' src={bg} alt="Фоновое изображение в виде щита" />
+						<img loading="lazy" src={bg} alt="Фоновое изображение в виде щита" />
 					</picture>
-					
 				</div>
 
 				<div className="intro__items-item" itemProp="description">
@@ -66,7 +93,11 @@ const Intro: React.FC = () => {
 				</div>
 			</div>
 
-			<div className="intro__pref" role="list" aria-label="Основные преимущества Quant VPN">
+			<div
+				ref={prefItemsRef}
+				className="intro__pref"
+				role="list"
+				aria-label="Основные преимущества Quant VPN">
 				<div
 					className="intro__pref-item"
 					role="listitem"
@@ -111,6 +142,7 @@ const Intro: React.FC = () => {
 					<meta itemProp="operatingSystem" content="Windows, macOS, iOS, Android" />
 					<meta itemProp="applicationCategory" content="SecurityApplication" />
 					<a
+						ref={downloadBtnRef}
 						className="intro__pref-item-download"
 						href="."
 						itemProp="downloadUrl"

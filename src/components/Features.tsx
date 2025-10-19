@@ -1,21 +1,50 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import img1 from '../assets/img/features/features-item-1.png';
 import img2 from '../assets/img/features/features-item-2.png';
 import img3 from '../assets/img/features/features-item-3.png';
 import img4 from '../assets/img/features/features-item-4.png';
 
+import {
+	initFeaturesAnimations,
+	cleanupFeaturesAnimations,
+} from '../animations/featuresAnimations';
+import type { FeaturesAnimationElements } from '../animations/featuresAnimations';
+
 const Features: React.FC = () => {
+	const sectionRef = useRef<HTMLElement>(null);
+	const headingRef = useRef<HTMLHeadingElement>(null);
+	const listRef = useRef<HTMLUListElement>(null);
+
+	useEffect(() => {
+		const elements: FeaturesAnimationElements = {
+			section: sectionRef.current,
+			heading: headingRef.current,
+			list: listRef.current,
+			listItems: listRef.current?.querySelectorAll('.features__list-item') || null,
+		};
+
+		const timeline = initFeaturesAnimations(elements);
+
+		return () => {
+			if (timeline) {
+				cleanupFeaturesAnimations(timeline, elements.listItems || undefined);
+			}
+		};
+	}, []);
+
 	return (
 		<section
+			ref={sectionRef}
 			className="features"
 			itemScope
 			itemType="https://schema.org/ItemList"
 			aria-labelledby="features-heading">
-			<h2 className="features__heading" id="features-heading" itemProp="name">
+			<h2 ref={headingRef} className="features__heading" id="features-heading" itemProp="name">
 				Наши преимущества
 			</h2>
 			<ul
+				ref={listRef}
 				className="features__list"
 				role="list"
 				aria-label="Список преимуществ Quant VPN"
@@ -39,7 +68,7 @@ const Features: React.FC = () => {
 							src={img1}
 							alt="Quant VPN features content image"
 							itemProp="image"
-							loading='lazy'
+							loading="lazy"
 						/>
 					</div>
 				</li>
@@ -64,7 +93,7 @@ const Features: React.FC = () => {
 							src={img2}
 							alt="Quant VPN features content image"
 							itemProp="image"
-							loading='lazy'
+							loading="lazy"
 						/>
 					</div>
 				</li>
@@ -89,7 +118,7 @@ const Features: React.FC = () => {
 							src={img3}
 							alt="Quant VPN features content image"
 							itemProp="image"
-							loading='lazy'
+							loading="lazy"
 						/>
 					</div>
 				</li>
@@ -114,7 +143,7 @@ const Features: React.FC = () => {
 							src={img4}
 							alt="Quant VPN features content image"
 							itemProp="image"
-							loading='lazy'
+							loading="lazy"
 						/>
 					</div>
 				</li>

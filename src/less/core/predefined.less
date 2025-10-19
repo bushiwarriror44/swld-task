@@ -1,0 +1,45 @@
+h1 {
+	.halvar-font-extrabold();
+	font-size: @h1-font-size;
+	line-height: @h1-line-height;
+	text-align: center;
+	color: @h1-color;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+	.halvar-font-bold();
+}
+
+p,
+span,
+figcaption,
+img {
+	.manrope-text();
+	@media (max-width: 1180px) {
+		font-size: 16px;
+	}
+	@media (max-width: 768px) {
+		font-size: 14px;
+	}
+	@media (max-width: 650px) {
+		font-size: 13px;
+	}
+	@media (max-width: 450px) {
+		font-size: 12px;
+	}
+}
+
+a,
+button {
+	.manrope-semibold();
+}
+
+main {
+	.set-stadard-page-width();
+}
+body {
+	overflow-x: hidden;
+}
