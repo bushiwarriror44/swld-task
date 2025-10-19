@@ -1,24 +1,16 @@
-import Header from './components/Header';
-import Intro from './components/Intro';
-import Features from './components/Features';
-import About from './components/About';
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HomePage, LinksPage } from './pages';
 
 import './less/common/main.less';
 
 function App() {
 	return (
-		<main itemScope itemType="https://schema.org/WebPage">
-			<meta itemProp="name" content="Quant VPN — квантовая защита данных" />
-			<meta itemProp="inLanguage" content="ru" />
-			<meta itemProp="copyrightYear" content="2025" />
-			<meta itemProp="publisher" content="Quant VPN Team" />
-			
-			<Header />
-			<Intro />
-			<Features />
-			<About />
-		</main>
+		<Router>
+			<Routes>
+				<Route path="/" element={<HomePage />} />
+				<Route path="/links" element={<LinksPage />} />
+			</Routes>
+		</Router>
 	);
 }
 

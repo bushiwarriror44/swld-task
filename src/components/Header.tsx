@@ -1,8 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import logo from '../assets/img/header/logo.svg';
+import { useLinksStore } from '../store/linksStore';
 
 const Header: React.FC = () => {
+	const { links } = useLinksStore();
+
 	return (
 		<header
 			className="header"
@@ -10,13 +14,13 @@ const Header: React.FC = () => {
 			itemType="https://schema.org/WPHeader"
 			aria-label="Основная шапка сайта Quant VPN">
 			<div className="header-wrapper">
-				<a href="." itemProp="url" aria-label="На главную Quant VPN">
+				<Link to={links.home} itemProp="url" aria-label="На главную Quant VPN">
 					<img className="header__logo" src={logo} alt="Логотип Quant VPN" itemProp="logo" />
-				</a>
+				</Link>
 
 				<a
 					className="header__button"
-					href="."
+					href={links.support}
 					role="button"
 					aria-label="Задать вопрос службе поддержки Quant VPN"
 					itemProp="contactPoint"

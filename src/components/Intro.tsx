@@ -2,13 +2,13 @@ import React, { useEffect, useRef } from 'react';
 
 import img1 from '../assets/img/intro/item-img-1.png';
 import img2 from '../assets/img/intro/item-img-2.png';
-import img1Mobile from '../assets/img/intro/item-img-1-mobile.png';
 
 import bg from '../assets/img/intro/main-bg.png';
-import bgMobile from '../assets/img/intro/main-bg-mobile.png';
 
 import { initIntroAnimations, cleanupIntroAnimations } from '../animations/introAnimations';
 import type { IntroAnimationElements } from '../animations/introAnimations';
+import { useLinksStore } from '../store/linksStore';
+import { WebPImage } from '../utils/WebPImage';
 
 const Intro: React.FC = () => {
 	const sectionRef = useRef<HTMLElement>(null);
@@ -16,6 +16,8 @@ const Intro: React.FC = () => {
 	const bgRef = useRef<HTMLDivElement>(null);
 	const prefItemsRef = useRef<HTMLDivElement>(null);
 	const downloadBtnRef = useRef<HTMLAnchorElement>(null);
+
+	const { links } = useLinksStore();
 
 	useEffect(() => {
 		const elements: IntroAnimationElements = {
@@ -54,12 +56,10 @@ const Intro: React.FC = () => {
 				<div className="intro__items-item" itemProp="description">
 					<figure>
 						<picture>
-							<source srcSet={img1} media="(min-width: 450px)" />
-							<source srcSet={img1Mobile} media="(max-width: 450px)" />
-							<img
-								className="intro__items-item-img"
+							<WebPImage
 								src={img1}
 								alt="Изображение, символизирующее приватность"
+								className="intro__items-item-img"
 								itemProp="image"
 							/>
 						</picture>
@@ -72,18 +72,16 @@ const Intro: React.FC = () => {
 
 				<div ref={bgRef} className="intro__items-item--bg" aria-hidden="true">
 					<picture>
-						<source srcSet={bg} media="(min-width: 450px)" />
-						<source srcSet={bgMobile} media="(max-width: 450px)" />
-						<img loading="lazy" src={bg} alt="Фоновое изображение в виде щита" />
+						<WebPImage src={bg} alt="Фоновое изображение в виде щита" loading="lazy" />
 					</picture>
 				</div>
 
 				<div className="intro__items-item" itemProp="description">
 					<figure>
-						<img
-							className="intro__items-item-img"
+						<WebPImage
 							src={img2}
 							alt="Изображение стены, символизирующее защиту"
+							className="intro__items-item-img"
 							itemProp="image"
 						/>
 						<figcaption className="intro__items-item-para">
@@ -144,7 +142,7 @@ const Intro: React.FC = () => {
 					<a
 						ref={downloadBtnRef}
 						className="intro__pref-item-download"
-						href="."
+						href={links.download}
 						itemProp="downloadUrl"
 						aria-label="Скачать Quant VPN">
 						Скачать Quant VPN

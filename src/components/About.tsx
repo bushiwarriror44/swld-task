@@ -4,6 +4,8 @@ import bg from '../assets/img/about/content-img.png';
 
 import { initAboutAnimations, cleanupAboutAnimations } from '../animations/aboutAnimations';
 import type { AboutAnimationElements } from '../animations/aboutAnimations';
+import { useLinksStore } from '../store/linksStore';
+import { WebPImage } from '../utils/WebPImage';
 const About: React.FC = () => {
 	const sectionRef = useRef<HTMLElement>(null);
 	const innerRef = useRef<HTMLDivElement>(null);
@@ -12,6 +14,8 @@ const About: React.FC = () => {
 	const headingRef = useRef<HTMLHeadingElement>(null);
 	const descriptionRef = useRef<HTMLParagraphElement>(null);
 	const downloadBtnRef = useRef<HTMLAnchorElement>(null);
+
+	const { links } = useLinksStore();
 
 	useEffect(() => {
 		const elements: AboutAnimationElements = {
@@ -45,11 +49,11 @@ const About: React.FC = () => {
 				className="about__inner"
 				role="region"
 				aria-label="Информация о Quant VPN">
-				<img
+				<WebPImage
 					ref={bgImageRef}
-					className="about__bg"
 					src={bg}
 					alt="Quant VPN Content Image of World"
+					className="about__bg"
 					itemProp="image"
 					loading="lazy"
 				/>
@@ -73,7 +77,7 @@ const About: React.FC = () => {
 					<a
 						ref={downloadBtnRef}
 						className="about__content-download"
-						href="."
+						href={links.download}
 						itemProp="downloadUrl"
 						aria-label="Скачать приложение Quant VPN">
 						Скачать Quant VPN
