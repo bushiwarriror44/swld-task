@@ -5,7 +5,6 @@ import bg from '../assets/img/about/content-img.png';
 import { initAboutAnimations, cleanupAboutAnimations } from '../animations/aboutAnimations';
 import type { AboutAnimationElements } from '../animations/aboutAnimations';
 import { useLinksStore } from '../store/linksStore';
-import { WebPImage } from '../utils/WebPImage';
 const About: React.FC = () => {
 	const sectionRef = useRef<HTMLElement>(null);
 	const innerRef = useRef<HTMLDivElement>(null);
@@ -49,11 +48,11 @@ const About: React.FC = () => {
 				className="about__inner"
 				role="region"
 				aria-label="Информация о Quant VPN">
-				<WebPImage
+				<img
 					ref={bgImageRef}
+					className="about__bg"
 					src={bg}
 					alt="Quant VPN Content Image of World"
-					className="about__bg"
 					itemProp="image"
 					loading="lazy"
 				/>

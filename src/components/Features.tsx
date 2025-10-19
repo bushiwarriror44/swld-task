@@ -10,7 +10,6 @@ import {
 	cleanupFeaturesAnimations,
 } from '../animations/featuresAnimations';
 import type { FeaturesAnimationElements } from '../animations/featuresAnimations';
-import { WebPImage } from '../utils/WebPImage';
 
 const Features: React.FC = () => {
 	const sectionRef = useRef<HTMLElement>(null);
@@ -64,10 +63,10 @@ const Features: React.FC = () => {
 						</p>
 					</div>
 					<div className="features__list-item-content">
-						<WebPImage
+						<img
+							className="features__list-item-content-img"
 							src={img1}
 							alt="Quant VPN features content image"
-							className="features__list-item-content-img"
 							itemProp="image"
 							loading="lazy"
 						/>
@@ -89,10 +88,10 @@ const Features: React.FC = () => {
 						</p>
 					</div>
 					<div className="features__list-item-content">
-						<WebPImage
+						<img
+							className="features__list-item-content-img"
 							src={img2}
 							alt="Quant VPN features content image"
-							className="features__list-item-content-img"
 							itemProp="image"
 							loading="lazy"
 						/>
@@ -114,10 +113,10 @@ const Features: React.FC = () => {
 						</p>
 					</div>
 					<div className="features__list-item-content">
-						<WebPImage
+						<img
+							className="features__list-item-content-img"
 							src={img3}
 							alt="Quant VPN features content image"
-							className="features__list-item-content-img"
 							itemProp="image"
 							loading="lazy"
 						/>
@@ -139,10 +138,10 @@ const Features: React.FC = () => {
 						</p>
 					</div>
 					<div className="features__list-item-content">
-						<WebPImage
+						<img
+							className="features__list-item-content-img"
 							src={img4}
 							alt="Quant VPN features content image"
-							className="features__list-item-content-img"
 							itemProp="image"
 							loading="lazy"
 						/>

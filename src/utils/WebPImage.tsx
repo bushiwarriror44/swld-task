@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Интерфейс для WebP изображения с fallback
 interface WebPImageProps {
 	src: string;
 	webpSrc?: string;
@@ -13,9 +12,11 @@ interface WebPImageProps {
 	onError?: () => void;
 }
 
-// Компонент для автоматической конвертации PNG в WebP
 export const WebPImage = React.forwardRef<HTMLImageElement, WebPImageProps>(
 	({ src, webpSrc, alt, className, style, loading = 'lazy', itemProp, onLoad, onError }, ref) => {
+		const [webpError, setWebpError] = React.useState(false);
+		const [imageError, setImageError] = React.useState(false);
+
 		// Автоматически генерируем WebP путь из PNG пути
 		const generateWebPSrc = (originalSrc: string): string => {
 			if (originalSrc.endsWith('.png')) {
@@ -29,10 +30,40 @@ export const WebPImage = React.forwardRef<HTMLImageElement, WebPImageProps>(
 
 		const webpSource = webpSrc || generateWebPSrc(src);
 
+		const handleWebPError = () => {
+			setWebpError(true);
+		};
+
+		const handleImageError = () => {
+			setImageError(true);
+			onError?.();
+		};
+
+		const handleImageLoad = () => {
+			onLoad?.();
+		};
+
+		// Если WebP не поддерживается или произошла ошибка, показываем только оригинальное изображение
+		if (webpError || imageError) {
+			return (
+				<img
+					ref={ref}
+					src={src}
+					alt={alt}
+					className={className}
+					style={style}
+					loading={loading}
+					itemProp={itemProp}
+					onLoad={handleImageLoad}
+					onError={handleImageError}
+				/>
+			);
+		}
+
 		return (
 			<picture>
 				{/* WebP источник для современных браузеров */}
-				<source srcSet={webpSource} type="image/webp" />
+				<source srcSet={webpSource} type="image/webp" onError={handleWebPError} />
 
 				{/* Fallback для старых браузеров */}
 				<img
@@ -43,15 +74,14 @@ export const WebPImage = React.forwardRef<HTMLImageElement, WebPImageProps>(
 					style={style}
 					loading={loading}
 					itemProp={itemProp}
-					onLoad={onLoad}
-					onError={onError}
+					onLoad={handleImageLoad}
+					onError={handleImageError}
 				/>
 			</picture>
 		);
 	},
 );
 
-// Хук для проверки поддержки WebP
 export const useWebPSupport = (): boolean => {
 	const [webpSupported, setWebpSupported] = React.useState<boolean>(false);
 
@@ -73,7 +103,6 @@ export const useWebPSupport = (): boolean => {
 	return webpSupported;
 };
 
-// Утилита для автоматической конвертации изображений
 export const convertToWebP = async (file: File, quality: number = 0.8): Promise<File> => {
 	return new Promise((resolve, reject) => {
 		const canvas = document.createElement('canvas');
@@ -107,7 +136,6 @@ export const convertToWebP = async (file: File, quality: number = 0.8): Promise<
 	});
 };
 
-// Утилита для получения оптимального формата изображения
 export const getOptimalImageFormat = (src: string, webpSupported: boolean): string => {
 	if (webpSupported && (src.endsWith('.png') || src.endsWith('.jpg') || src.endsWith('.jpeg'))) {
 		return src.replace(/\.(png|jpg|jpeg)$/, '.webp');

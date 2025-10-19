@@ -1,27 +1,13 @@
-// Типы для компонентов Quant VPN
+
 
 export interface QuantVPNProps {
 	className?: string;
 	children?: React.ReactNode;
 }
 
-export interface HeaderProps extends QuantVPNProps {
-	// Дополнительные пропсы для Header, если потребуются
-}
 
-export interface IntroProps extends QuantVPNProps {
-	// Дополнительные пропсы для Intro, если потребуются
-}
 
-export interface FeaturesProps extends QuantVPNProps {
-	// Дополнительные пропсы для Features, если потребуются
-}
 
-export interface AboutProps extends QuantVPNProps {
-	// Дополнительные пропсы для About, если потребуются
-}
-
-// Типы для мета-данных Schema.org
 export interface SchemaMetadata {
 	name?: string;
 	description?: string;
@@ -36,7 +22,7 @@ export interface SchemaMetadata {
 	position?: number;
 }
 
-// Типы для изображений
+
 export interface ImageProps {
 	src: string;
 	alt: string;
@@ -44,7 +30,7 @@ export interface ImageProps {
 	itemProp?: string;
 }
 
-// Типы для ссылок
+
 export interface LinkProps {
 	href: string;
 	className?: string;

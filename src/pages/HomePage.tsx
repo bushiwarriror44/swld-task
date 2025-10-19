@@ -9,7 +9,6 @@ import About from '../components/About';
 const HomePage: React.FC = () => {
 	return (
 		<>
-			{/* <Navigation /> */}
 			<main itemScope itemType="https://schema.org/WebPage">
 				<meta itemProp="name" content="Quant VPN — квантовая защита данных" />
 				<meta itemProp="inLanguage" content="ru" />

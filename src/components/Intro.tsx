@@ -8,7 +8,6 @@ import bg from '../assets/img/intro/main-bg.png';
 import { initIntroAnimations, cleanupIntroAnimations } from '../animations/introAnimations';
 import type { IntroAnimationElements } from '../animations/introAnimations';
 import { useLinksStore } from '../store/linksStore';
-import { WebPImage } from '../utils/WebPImage';
 
 const Intro: React.FC = () => {
 	const sectionRef = useRef<HTMLElement>(null);
@@ -55,15 +54,12 @@ const Intro: React.FC = () => {
 				aria-label="Описание преимуществ приватности и скорости">
 				<div className="intro__items-item" itemProp="description">
 					<figure>
-						<picture>
-							<WebPImage
-								src={img1}
-								alt="Изображение, символизирующее приватность"
-								className="intro__items-item-img"
-								itemProp="image"
-							/>
-						</picture>
-
+						<img
+							className="intro__items-item-img"
+							src={img1}
+							alt="Изображение, символизирующее приватность"
+							itemProp="image"
+						/>
 						<figcaption className="intro__items-item-para">
 							В мире, где приватность становится роскошью, Quant VPN меняет правила игры
 						</figcaption>
@@ -71,17 +67,15 @@ const Intro: React.FC = () => {
 				</div>
 
 				<div ref={bgRef} className="intro__items-item--bg" aria-hidden="true">
-					<picture>
-						<WebPImage src={bg} alt="Фоновое изображение в виде щита" loading="lazy" />
-					</picture>
+					<img loading="lazy" src={bg} alt="Фоновое изображение в виде щита" />
 				</div>
 
 				<div className="intro__items-item" itemProp="description">
 					<figure>
-						<WebPImage
+						<img
+							className="intro__items-item-img"
 							src={img2}
 							alt="Изображение стены, символизирующее защиту"
-							className="intro__items-item-img"
 							itemProp="image"
 						/>
 						<figcaption className="intro__items-item-para">

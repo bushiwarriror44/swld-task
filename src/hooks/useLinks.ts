@@ -1,23 +1,23 @@
-// Примеры использования Zustand store для управления ссылками
+
 
 import { useLinksStore, type LinksStore } from '../store/linksStore';
 
-// Пример 1: Получение всех ссылок
+
 export const useAllLinks = () => {
 	return useLinksStore((state: LinksStore) => state.links);
 };
 
-// Пример 2: Получение конкретной ссылки
+
 export const useHomeLink = () => {
 	return useLinksStore((state: LinksStore) => state.links.home);
 };
 
-// Пример 3: Получение ссылки на скачивание
+
 export const useDownloadLink = () => {
 	return useLinksStore((state: LinksStore) => state.links.download);
 };
 
-// Пример 4: Хук для обновления ссылок
+
 export const useLinkUpdater = () => {
 	const { updateLink, updateMultipleLinks, resetLinks } = useLinksStore();
 
@@ -28,7 +28,7 @@ export const useLinkUpdater = () => {
 	};
 };
 
-// Пример 5: Хук для работы с конкретными ссылками
+
 export const useNavigationLinks = () => {
 	const { links, updateLink } = useLinksStore();
 
@@ -46,7 +46,7 @@ export const useNavigationLinks = () => {
 	};
 };
 
-// Пример 6: Хук для программного управления ссылками
+
 export const useLinkManager = () => {
 	const { links, updateMultipleLinks, resetLinks } = useLinksStore();
 
