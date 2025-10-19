@@ -1,6 +1,6 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
-import Navigation from '../components/Navigation';
+
 import Header from '../components/Header';
 import Intro from '../components/Intro';
 import Features from '../components/Features';
