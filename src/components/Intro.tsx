@@ -1,5 +1,12 @@
 import React from 'react';
 
+import img1 from '../assets/img/intro/item-img-1.png';
+import img2 from '../assets/img/intro/item-img-2.png';
+import img1Mobile from '../assets/img/intro/item-img-1-mobile.png';
+
+import bg from '../assets/img/intro/main-bg.png';
+import bgMobile from '../assets/img/intro/main-bg-mobile.png';
+
 const Intro: React.FC = () => {
 	return (
 		<section
@@ -16,13 +23,19 @@ const Intro: React.FC = () => {
 				role="group"
 				aria-label="Описание преимуществ приватности и скорости">
 				<div className="intro__items-item" itemProp="description">
+					
 					<figure>
-						<img
-							className="intro__items-item-img"
-							src="."
-							alt="Изображение, символизирующее приватность"
-							itemProp="image"
-						/>
+						<picture>
+							<source srcSet={img1} media="(min-width: 450px)" />
+							<source srcSet={img1Mobile} media="(max-width: 450px)" />
+							<img
+								className="intro__items-item-img"
+								src={img1}
+								alt="Изображение, символизирующее приватность"
+								itemProp="image"
+							/>
+						</picture>
+						
 						<figcaption className="intro__items-item-para">
 							В мире, где приватность становится роскошью, Quant VPN меняет правила игры
 						</figcaption>
@@ -30,19 +43,19 @@ const Intro: React.FC = () => {
 				</div>
 
 				<div className="intro__items-item--bg" aria-hidden="true">
-					<img
-						className="intro__items-item--bg-img"
-						src="."
-						alt="Фоновое изображение в виде щита"
-						itemProp="image"
-					/>
+					<picture>
+						<source srcSet={bg} media="(min-width: 450px)" />
+						<source srcSet={bgMobile} media="(max-width: 450px)" />
+						<img loading='lazy' src={bg} alt="Фоновое изображение в виде щита" />
+					</picture>
+					
 				</div>
 
 				<div className="intro__items-item" itemProp="description">
 					<figure>
 						<img
 							className="intro__items-item-img"
-							src="."
+							src={img2}
 							alt="Изображение стены, символизирующее защиту"
 							itemProp="image"
 						/>
@@ -105,7 +118,7 @@ const Intro: React.FC = () => {
 						Скачать Quant VPN
 					</a>
 					<h1 className="intro__pref-item-caption" itemProp="headline">
-						Быстро и надежно
+						Надежно и быстро
 					</h1>
 				</div>
 

@@ -13,7 +13,7 @@ function App() {
 			<meta itemProp="inLanguage" content="ru" />
 			<meta itemProp="copyrightYear" content="2025" />
 			<meta itemProp="publisher" content="Quant VPN Team" />
-
+			
 			<Header />
 			<Intro />
 			<Features />

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import bg from '../assets/img/about/content-img.png';
 const About: React.FC = () => {
 	return (
 		<section
@@ -10,9 +11,10 @@ const About: React.FC = () => {
 			<div className="about__inner" role="region" aria-label="Информация о Quant VPN">
 				<img
 					className="about__bg"
-					src="."
+					src={bg}
 					alt="Quant VPN Content Image of World"
 					itemProp="image"
+					loading='lazy'
 				/>
 				<div
 					className="about__content"

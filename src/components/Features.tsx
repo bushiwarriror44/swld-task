@@ -1,5 +1,10 @@
 import React from 'react';
 
+import img1 from '../assets/img/features/features-item-1.png';
+import img2 from '../assets/img/features/features-item-2.png';
+import img3 from '../assets/img/features/features-item-3.png';
+import img4 from '../assets/img/features/features-item-4.png';
+
 const Features: React.FC = () => {
 	return (
 		<section
@@ -31,9 +36,10 @@ const Features: React.FC = () => {
 					<div className="features__list-item-content">
 						<img
 							className="features__list-item-content-img"
-							src="."
+							src={img1}
 							alt="Quant VPN features content image"
 							itemProp="image"
+							loading='lazy'
 						/>
 					</div>
 				</li>
@@ -55,9 +61,10 @@ const Features: React.FC = () => {
 					<div className="features__list-item-content">
 						<img
 							className="features__list-item-content-img"
-							src="."
+							src={img2}
 							alt="Quant VPN features content image"
 							itemProp="image"
+							loading='lazy'
 						/>
 					</div>
 				</li>
@@ -79,9 +86,10 @@ const Features: React.FC = () => {
 					<div className="features__list-item-content">
 						<img
 							className="features__list-item-content-img"
-							src="."
+							src={img3}
 							alt="Quant VPN features content image"
 							itemProp="image"
+							loading='lazy'
 						/>
 					</div>
 				</li>
@@ -103,9 +111,10 @@ const Features: React.FC = () => {
 					<div className="features__list-item-content">
 						<img
 							className="features__list-item-content-img"
-							src="."
+							src={img4}
 							alt="Quant VPN features content image"
 							itemProp="image"
+							loading='lazy'
 						/>
 					</div>
 				</li>

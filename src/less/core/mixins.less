@@ -1,7 +1,7 @@
 // Миксины для шрифтов
 .halvar-font() {
   font-family: @font-family-halvar;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .halvar-font-bold() {
@@ -29,7 +29,7 @@
 }
 
 .halvar-heading-bold(@size: 2rem) {
-  .halvar-heading(@size, 700);
+  .halvar-heading(@size, 600);
 }
 
 .halvar-heading-extrabold(@size: 2rem) {
@@ -56,6 +56,23 @@
 
 .manrope-semibold(@size: @standard-text-size) {
   .manrope-text(@size, @manrope-semibold);
+}
+
+// Миксины для шрифта TTCommons
+.ttcommons-font(@weight: 400) {
+  font-family: @font-family-ttcommons;
+  font-weight: @weight;
+}
+
+.ttcommons-text(@size: @standard-text-size, @weight: 400) {
+  .ttcommons-font(@weight);
+  font-size: @size;
+  line-height: @standard-text-lh;
+  color: @standard-text-color;
+}
+
+.ttcommons-regular(@size: @standard-text-size) {
+  .ttcommons-text(@size, 400);
 }
 
 // Миксины для градиентов
